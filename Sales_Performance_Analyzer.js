@@ -18,6 +18,7 @@ const alicesales = salesData[0].sales;
 console.log (calculateAverageSales(alicesales)
 );
 
+// Task 2- Create a Function to Determine Performance Rating
 function determinePerformanceRating(averageSales) {
     if(averageSales >10000) {
         return "Excellent";
@@ -32,3 +33,29 @@ function determinePerformanceRating(averageSales) {
 
 const aliceAvgSales = calculateAverageSales(alicesales);
 console.log("Alice's performance rating: "+ determinePerformanceRating(aliceAvgSales));
+
+// Task 3- Create a Function to Identify Top and Bottom Performers
+const avgSalesData= salesData.map(person=>({
+  name:person.name,
+   totalSales:person.sales.reduce(function(current,sale){return current+sale},0) 
+}));
+function findTopAndBottomPerformers(salesData) {
+var topPerformer = salesData.reduce(function(top,person){
+    return (person.totalSales>top.totalSales)? person:top;
+
+});
+
+var bottomPerformer = salesData.reduce(function(bottom,person){
+    return (person.totalSales<bottom.totalSales)? person:bottom;
+
+});
+return {topPerformer,bottomPerformer};
+
+
+
+}
+console.log("Top Performer: " + findTopAndBottomPerformers(avgSalesData).topPerformer.name + " with total sales of $" + findTopAndBottomPerformers(avgSalesData).topPerformer.totalSales);
+console.log("Bottom Performer: " + findTopAndBottomPerformers(avgSalesData).bottomPerformer.name + " with total sales of $" + findTopAndBottomPerformers(avgSalesData).bottomPerformer.totalSales);
+
+
+console.log(findTopAndBottomPerformers(avgSalesData));

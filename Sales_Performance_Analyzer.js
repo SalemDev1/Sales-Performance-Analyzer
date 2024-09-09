@@ -17,3 +17,18 @@ const salesData = [
 const alicesales = salesData[0].sales;
 console.log (calculateAverageSales(alicesales)
 );
+
+function determinePerformanceRating(averageSales) {
+    if(averageSales >10000) {
+        return "Excellent";
+    } else if (averageSales >= 7000 && averageSales <= 10000) {
+        return "Good";
+    } else if (averageSales >= 4000 && averageSales <= 7000) {
+        return "Satisfactory";
+    } else { return "Needs Improvement";
+
+    }
+};
+
+const aliceAvgSales = calculateAverageSales(alicesales);
+console.log("Alice's performance rating: "+ determinePerformanceRating(aliceAvgSales));
